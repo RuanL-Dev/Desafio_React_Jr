@@ -1,20 +1,16 @@
 import styled from 'styled-components'
-import IconImages from '../iconImage/IconImage'
+import IconImages from '../iconImage/IconImages'
 
-const StyledButtonAdd = styled.button`
+const StyledButtonSave = styled.button`
   background-color: ${(props) => props.theme.buttonColor};
   color: rgba(2, 2, 2, 0.7);
-  padding: 12px 90px;
+  padding: 5px 20px;
   border-radius: 100px;
   border: 0;
-  font-size: 30px;
-  cursor: pointer;
+  font-size: 20px;
+  line-height: 30px;
   transition: 0.3s;
   position: relative;
-
-  :hover {
-    background-color: ${(props) => props.theme.buttonHover};
-  }
 
   :after {
     content: '';
@@ -49,23 +45,24 @@ const StyledButtonAdd = styled.button`
   :hover:after {
     transform: scaleX(1);
   }
+
+  ${(props) => !props.disabled && 'cursor: pointer;'}
+  :hover {
+    background-color: ${(props) => props.theme.buttonHover};
+  }
+
   :disabled {
     background-color: ${(props) => props.theme.disabled};
   }
-  @media (max-width: 400px) {
-    width: 250px;
-    padding: 12px 50px;
-    font-size: 20px;
-  }
 `
 
-const ButtonAdd = ({ children, loading, ...props }) => {
+const ButtonSave = ({ children, loading, disabled, ...props }) => {
   return (
-    <StyledButtonAdd disabled={loading} {...props}>
+    <StyledButtonSave disabled={disabled || loading} {...props}>
       {loading && <IconImages imageName="loading" type="svg" size="25px" />}
       {!loading && children}
-    </StyledButtonAdd>
+    </StyledButtonSave>
   )
 }
 
-export default ButtonAdd
+export default ButtonSave
