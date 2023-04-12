@@ -6,6 +6,7 @@ import styled from 'styled-components'
 
 import ContainerPage from '../src/components/layout/ContainerPage'
 import Body from '../src/components/layout/Body'
+import UseContainer from '../src/components/layout/UserContainer'
 import ButtonAdd from '../src/components/button/ButtonAdd'
 import SearchInput from '../src/components/Input/SearchInput'
 
@@ -20,6 +21,7 @@ function HomePage() {
   }
   return (
     <Body>
+      <UseContainer />
       <ContainerPage>
         <div>Hello World!</div>
         <SearchInput

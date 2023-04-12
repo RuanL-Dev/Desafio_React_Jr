@@ -20,7 +20,7 @@ const StyledInput = styled.input`
   border-radius: 100px;
   border: none;
   font-size: 30px;
-  color: #000000;
+  color: white;
 
   @media (max-width: 850px) {
     width: auto;

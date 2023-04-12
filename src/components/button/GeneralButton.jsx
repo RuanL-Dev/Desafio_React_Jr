@@ -1,20 +1,20 @@
 import styled from 'styled-components'
-import IconImages from '../iconImage/IconImages'
+import IconImage from '../iconImage/IconImage'
 
-const StyledButtonSave = styled.button`
+const StyledButton = styled.button`
   background-color: ${(props) => props.theme.buttonColor};
   color: rgba(2, 2, 2, 0.7);
-  padding: 5px 20px;
-  border-radius: 100px;
+  padding: 15px 40px;
+  border-radius: 25px;
   border: 0;
   font-size: 20px;
-  line-height: 30px;
   transition: 0.3s;
   position: relative;
+  text-align: center;
 
   :after {
     content: '';
-    border-radius: 100px;
+    border-radius: 50px;
     position: absolute;
     bottom: 0;
     top: 0;
@@ -27,7 +27,7 @@ const StyledButtonSave = styled.button`
   }
   :before {
     content: '';
-    border-radius: 100px;
+    border-radius: 50px;
     position: absolute;
     bottom: 0;
     top: 0;
@@ -45,10 +45,10 @@ const StyledButtonSave = styled.button`
   :hover:after {
     transform: scaleX(1);
   }
-
   ${(props) => !props.disabled && 'cursor: pointer;'}
   :hover {
     background-color: ${(props) => props.theme.buttonHover};
+    box-shadow: inset 0px 5px 10px;
   }
 
   :disabled {
@@ -56,13 +56,13 @@ const StyledButtonSave = styled.button`
   }
 `
 
-const ButtonSave = ({ children, loading, disabled, ...props }) => {
+const GeneralButton = ({ children, loading, disabled, ...props }) => {
   return (
-    <StyledButtonSave disabled={disabled || loading} {...props}>
-      {loading && <IconImages imageName="loading" type="svg" size="25px" />}
+    <StyledButton disabled={disabled || loading} {...props}>
+      {loading && <IconImage imageName="loading" type="svg" size="25px" />}
       {!loading && children}
-    </StyledButtonSave>
+    </StyledButton>
   )
 }
 
-export default ButtonSave
+export default GeneralButton
