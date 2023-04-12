@@ -4,7 +4,8 @@ import IconImage from '../iconImage/IconImage'
 const StyledButton = styled.button`
   background-color: ${(props) => props.theme.buttonColor};
   color: rgba(2, 2, 2, 0.7);
-  padding: 15px 40px;
+  width: 220px;
+  height: 55px;
   border-radius: 25px;
   border: 0;
   font-size: 20px;
