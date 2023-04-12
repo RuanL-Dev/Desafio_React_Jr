@@ -51,7 +51,7 @@ const UseContainer = () => {
     <StyledMainContainer>
       <StyledImage>
         <StyledPositionImage>
-          <IconImage imageName="userPicture" type="svg" size="60px"/>
+          <IconImage imageName="userPicture" type="svg" size="60px" />
         </StyledPositionImage>
       </StyledImage>
       <StyledText>Olá, @Usuário!</StyledText>

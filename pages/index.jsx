@@ -10,6 +10,16 @@ import UseContainer from '../src/components/layout/UserContainer'
 import ButtonAdd from '../src/components/button/ButtonAdd'
 import SearchInput from '../src/components/Input/SearchInput'
 
+const StyledText = styled.h1`
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  padding-top: 10px;
+  color: ${(props) => props.theme.textColor};
+`
+
+
 function HomePage() {
   const [newAds, setnewAds] = useState('')
   const [loading, setLoading] = useState(false)
@@ -23,16 +33,13 @@ function HomePage() {
     <Body>
       <UseContainer />
       <ContainerPage>
-        <div>Hello World!</div>
+        <StyledText>Meus anúncios</StyledText>
         <SearchInput
           type="text"
           name="search"
           placeholder="buscar"
           onChange={(event) => setnewAds(event.target.value.toUpperCase())}
         />
-        <ButtonAdd loading={loading} type="submit" onClick={handleClick}>
-          ADICIONAR
-        </ButtonAdd>
       </ContainerPage>
     </Body>
   )
