@@ -5,7 +5,7 @@ import IconImage from '../iconImage/IconImage'
 
 const StyledMainContainer = styled.div`
   background-color: ${(props) => props.theme.secondBackgroundColor};
-  margin-top: 10vh;
+  margin-top: 1vh;
   width: 900px;
   min-height: 15vh;
   display: flex;
@@ -28,7 +28,8 @@ const StyledContainerButton = styled.div`
   justify-content: center;
   gap: 20px;
   width: 95%;
-  margin-top: 20px;
+  margin-top: 15px;
+  padding-bottom: 15px;
 `
 const StyledImage = styled.div`
   position: absolute;
