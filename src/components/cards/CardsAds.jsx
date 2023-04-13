@@ -1,12 +1,5 @@
-import { useState } from 'react'
-import { useSWRConfig } from 'swr'
-import axios from 'axios'
-
 import styled from 'styled-components'
 
-import { GoTrashcan } from 'react-icons/go'
-import { FaRegEdit } from 'react-icons/fa'
-import { BsBookmarkHeart } from 'react-icons/bs'
 import CardsIcon from './CardsIcon'
 
 const CardContainer = styled.div`
@@ -16,29 +9,17 @@ const CardContainer = styled.div`
   height: 210px;
   padding: 10px 10px;
   border-radius: 20px;
+  margin: 10px 0;
   text-align: center;
   box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.3);
   color: white;
   transition: 0.4s;
 `
 const StyledCardText = styled.p`
-  font-family: 'Inter';
-  font-size: 25px;
+  font-size: 20px;
   line-height: 33px;
   color: ${(props) => props.theme.background};
   text-align: center;
-`
-const ContainerCardIcon = styled.div`
-  display: flex;
-  margin-left: 690px;
-  gap: 10px;
-  position: absolute;
-`
-const StyledCardIcons = styled.div`
-  cursor: pointer;
-  color: #0d0c0c;
-  font-size: 18px;
-  border: none;
 `
 export default function CardsAds() {
   return (
