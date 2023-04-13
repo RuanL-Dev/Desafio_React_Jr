@@ -21,7 +21,7 @@ const StyledText = styled.h2`
   font-weight: 700;
   font-size: 30px;
   line-height: 60px;
-  color: ${(props) => props.theme.textColor};
+  color: ${(props) => props.theme.WhiteBackground};
 `
 const StyledContainerButton = styled.div`
   display: flex;
