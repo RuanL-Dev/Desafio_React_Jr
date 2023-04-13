@@ -7,7 +7,7 @@ const theme = {
   buttonHover: 'rgb(137, 216, 221, 0.7)',
   error: 'red',
   disabled: 'grey',
-  textColor: '#D4F2F4'
+  WhiteBackground: '#D4F2F4'
 }
 
 export default theme
