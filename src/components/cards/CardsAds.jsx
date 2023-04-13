@@ -20,6 +20,7 @@ const StyledCardText = styled.p`
   line-height: 33px;
   color: ${(props) => props.theme.background};
   text-align: center;
+  overflow: hidden;
 `
 export default function CardsAds() {
   return (

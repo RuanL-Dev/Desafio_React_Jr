@@ -4,6 +4,7 @@ import axios from 'axios'
 import useSWR from 'swr'
 import styled from 'styled-components'
 
+import Navbar from '../src/components/navbar/Navbar'
 import ContainerPage from '../src/components/layout/ContainerPage'
 import Body from '../src/components/layout/Body'
 import UseContainer from '../src/components/layout/UserContainer'
@@ -32,6 +33,7 @@ function HomePage() {
   }
   return (
     <Body>
+      <Navbar />
       <UseContainer />
       <ContainerPage>
         <StyledText>Meus anúncios</StyledText>
