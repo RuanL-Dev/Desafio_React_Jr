@@ -19,8 +19,17 @@ const StyledInput = styled.input`
   padding-left: 80px;
   border-radius: 100px;
   border: none;
+  font-family: 'Inter';
+  font-weight: 500;
   font-size: 30px;
-  color: white;
+  color: ${(props) => props.theme.WhiteBackground};
+
+  :focus {
+    box-shadow: inset 0px 5px 10px;
+  }
+  ::placeholder {
+    color: ${(props) => props.theme.WhiteBackground};
+  }
 
   @media (max-width: 850px) {
     width: auto;

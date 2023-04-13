@@ -9,6 +9,7 @@ import Body from '../src/components/layout/Body'
 import UseContainer from '../src/components/layout/UserContainer'
 import ButtonAdd from '../src/components/button/ButtonAdd'
 import SearchInput from '../src/components/Input/SearchInput'
+import CardsAds from '../src/components/cards/CardsAds'
 
 const StyledText = styled.h1`
   font-family: 'Inter';
@@ -16,7 +17,7 @@ const StyledText = styled.h1`
   font-weight: 700;
   font-size: 40px;
   padding-top: 10px;
-  color: ${(props) => props.theme.textColor};
+  color: ${(props) => props.theme.WhiteBackground};
 `
 
 
@@ -40,6 +41,7 @@ function HomePage() {
           placeholder="buscar"
           onChange={(event) => setnewAds(event.target.value.toUpperCase())}
         />
+        <CardsAds />
       </ContainerPage>
     </Body>
   )
