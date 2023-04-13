@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import IconImage from '../iconImage/IconImage'
 
 const StyledButton = styled.button`
-  background-color: ${(props) => props.theme.buttonColor};
+  background-color: ${(props) => props.theme.WhiteBackground};
   color: rgba(2, 2, 2, 0.7);
   width: 220px;
   height: 55px;
@@ -12,6 +12,7 @@ const StyledButton = styled.button`
   transition: 0.3s;
   position: relative;
   text-align: center;
+  box-shadow: 0px 10px 20px #04445F;
 
   :after {
     content: '';
