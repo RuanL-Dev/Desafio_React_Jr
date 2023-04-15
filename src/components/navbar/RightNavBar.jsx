@@ -1,3 +1,5 @@
+import { useRouter } from 'next/router'
+
 import styled from 'styled-components'
 
 const StyledUl = styled.ul`
@@ -51,15 +53,24 @@ const StyledUl = styled.ul`
 `
 
 const RightNavBar = ({ open }) => {
+  const router = useRouter()
+  const handleClickToNewProduct = () => {
+    !open
+    router.push('/newProduct')
+  }
+  const handleClicktoMyAdds = () => {
+    !open
+    router.push('/')
+  }
   const handleClick = () => {
     !open
   }
 
   return (
     <StyledUl open={open}>
-      <li onClick={handleClick}>Home</li>
-      <li onClick={handleClick}>Cadastros</li>
-      <li onClick={handleClick}>Meus Anúncios</li>
+      <li onClick={handleClicktoMyAdds}>Home</li>
+      <li onClick={handleClickToNewProduct}>Cadastros</li>
+      <li onClick={handleClicktoMyAdds}>Meus Anúncios</li>
       <li onClick={handleClick}>Relatórios</li>
     </StyledUl>
   )
