@@ -65,6 +65,12 @@ function newProduct() {
         <FormContainer>
           <Form>
             <Input label="Código" placeholder="Insira o código" name="Code" control={control} />
+            <Input
+              label="Título"
+              placeholder="Título para o produto"
+              name="Title"
+              control={control}
+            />
             <Input label="Preço" placeholder="(R$)" name="Price" control={control} />
             <Input
               label="Data do cadastro"
