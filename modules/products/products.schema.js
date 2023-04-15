@@ -7,13 +7,15 @@ export const newProductSchema = Joi.object({
     .required()
     .max(10)
     .message('O campo "Código" pode ter no máximo {{#limit}} caracteres'),
+  Title: Joi.string()
+    .required()
+    .max(50)
+    .message('O campo "Descrição" pode ter no máximo {{#limit}} caracteres'),
   Price: Joi.string()
     .required()
     .max(8)
     .message('O campo "Preço" pode ter no máximo {{#limit}} caracteres'),
-  Date: Joi.string()
-    .required(11)
-    .message('O campo "Data" pode ter no máximo {{#limit}} caracteres'),
+  Date: Joi.string().required(11),
   Description: Joi.string()
     .required()
     .max(150)
@@ -27,6 +29,7 @@ export const deleteProductSchema = Joi.object({
 export const editProductSchema = Joi.object({
   id: Joi.objectId(),
   Code: Joi.string(),
+  Title: Joi.string(),
   Price: Joi.string(),
   Date: Joi.string(),
   Description: Joi.string(),
@@ -35,6 +38,7 @@ export const editProductSchema = Joi.object({
 
 export const filterProductSchema = Joi.object({
   Code: Joi.string(),
+  Title: Joi.string(),
   Price: Joi.string(),
   Date: Joi.string(),
   Description: Joi.string()

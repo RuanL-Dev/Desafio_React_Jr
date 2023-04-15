@@ -28,6 +28,7 @@ export const editProduct = async (body) => {
     },
     {
       Code: body.Code,
+      Title: body.Title,
       Price: body.Price,
       Date: body.Date,
       Description: body.Description,
