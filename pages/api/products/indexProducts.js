@@ -14,6 +14,22 @@ indexProducts
       return res.status(400).send(err.message)
     }
   })
-  .delete(validate())
+  .delete(validate(deleteProductSchema), async (req,res) => {
+    try {
+      const deleteProduct = await deleteProduct(req.body.id)
+      if (deleteProduct) return res.status(200).send({ ok: true })
+      return res.status(400).send('Anúncio já deletado')
+    } catch (err) {
+      return res.status(500).send(err.message)
+    }
+  })
+  .get(async (req, res) => {
+    try {
+      const getProducts = await getProducts()
+      res.status(200).send(getProducts)
+    } catch (err) {
+      return res.status(500).send(err.message)
+    }
+  })
 
 export default indexProducts
