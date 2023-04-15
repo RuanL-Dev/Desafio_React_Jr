@@ -23,7 +23,8 @@ const StyledText = styled.h1`
 `
 
 const FormContainer = styled.div`
-  margin: 15vh 0;
+  margin-top: 5vh;
+  margin-bottom: 15vh;
   position: relative;
 `
 const ContainerButtonSave = styled.div`
@@ -64,9 +65,10 @@ function newProduct() {
         <FormContainer>
           <Form>
             <Input label="Código" placeholder="Insira o código" name="Code" control={control} />
-            <Input label="Preço" placeholder="Informe o preço" name="Price" control={control} />
+            <Input label="Preço" placeholder="R$" name="Price" control={control} />
             <Input
               label="Data do cadastro"
+              type="date"
               placeholder="(DD/MM/YYYY)"
               name="Date"
               control={control}
