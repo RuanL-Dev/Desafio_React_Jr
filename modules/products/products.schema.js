@@ -8,3 +8,23 @@ export const newProductSchema = Joi.object({
   Date: Joi.string().required(11),
   Description: Joi.string().required().max(70)
 })
+
+export const deleteProductSchema = Joi.object({
+  id: Joi.objectId().required()
+})
+
+export const editProductSchema = Joi.object({
+  id: Joi.objectId(),
+  Code: Joi.string(),
+  Price: Joi.string(),
+  Date: Joi.string(),
+  Description: Joi.string(),
+  isLiked: Joi.boolean()
+})
+
+export const filterProductSchema = Joi.object({
+  Code: Joi.string(),
+  Price: Joi.string(),
+  Date: Joi.string(),
+  Description: Joi.string()
+})

@@ -21,7 +21,7 @@ export const deleteProduct = async (id) => {
   })
 }
 
-export const editCar = async (body) => {
+export const editProduct = async (body) => {
   return await NewProduct.findOneAndUpdate(
     {
       _id: body._id

@@ -1,7 +1,7 @@
 import createHandler from '../../../lib/middlewares/nextConnect'
 import validate from '../../../lib/middlewares/validation'
-import { addNewProduct } from '../../../modules/products/products.service'
-import { newProductSchema } from '../../../modules/products/products.schema'
+import { addNewProduct, getProducts, deleteProduct, editProduct } from '../../../modules/products/products.service'
+import { newProductSchema, deleteProductSchema, editProductSchema  } from '../../../modules/products/products.schema'
 
 const indexProducts = createHandler()
 
@@ -13,6 +13,7 @@ indexProducts
     } catch (err) {
       return res.status(400).send(err.message)
     }
-  }) 
+  })
+  .delete(validate())
 
 export default indexProducts
