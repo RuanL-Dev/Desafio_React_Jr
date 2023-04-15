@@ -1,3 +1,5 @@
+import { useRouter } from 'next/router'
+
 import styled from 'styled-components'
 
 import GeneralButton from '../button/GeneralButton'
@@ -48,6 +50,14 @@ const StyledPositionImage = styled.div`
 `
 
 const UseContainer = () => {
+  const router = useRouter()
+  const handleClickToNewProduct = () => {
+    router.push('/newProduct')
+  }
+  const handleClicktoMyAdds = () => {
+    router.push('/')
+  }
+
   return (
     <StyledMainContainer>
       <StyledImage>
@@ -57,8 +67,12 @@ const UseContainer = () => {
       </StyledImage>
       <StyledText>Olá, @Usuário!</StyledText>
       <StyledContainerButton>
-        <GeneralButton>Meus anúncios</GeneralButton>
-        <GeneralButton>Cadastrar</GeneralButton>
+        <GeneralButton type="submit" onClick={handleClicktoMyAdds}>
+          Meus anúncios
+        </GeneralButton>
+        <GeneralButton type="submit" onClick={handleClickToNewProduct}>
+          Cadastrar
+        </GeneralButton>
       </StyledContainerButton>
     </StyledMainContainer>
   )
