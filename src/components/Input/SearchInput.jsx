@@ -3,7 +3,7 @@ import { SlMagnifier } from 'react-icons/sl'
 import styled from 'styled-components'
 
 const IconImageContainer = styled.div`
-  padding: 10px 0 32px 0;
+  padding: 10px 0 10px 0;
   display: flex;
   align-items: center;
   justify-content: center;
