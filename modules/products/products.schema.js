@@ -10,7 +10,7 @@ export const newProductSchema = Joi.object({
   Title: Joi.string()
     .required()
     .max(50)
-    .message('O campo "Descrição" pode ter no máximo {{#limit}} caracteres'),
+    .message('O campo "Título" pode ter no máximo {{#limit}} caracteres'),
   Price: Joi.string()
     .required()
     .max(8)
@@ -18,7 +18,7 @@ export const newProductSchema = Joi.object({
   Date: Joi.string().required(11),
   Description: Joi.string()
     .required()
-    .max(110)
+    .max(300)
     .message('O campo "Descrição" pode ter no máximo {{#limit}} caracteres')
 })
 
