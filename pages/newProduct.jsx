@@ -5,6 +5,7 @@ import { joiResolver } from '@hookform/resolvers/joi'
 import axios from 'axios'
 
 import styled from 'styled-components'
+import { newProductSchema } from '../modules/products/products.schema'
 
 import Navbar from '../src/components/navbar/Navbar'
 import ContainerPage from '../src/components/layout/ContainerPage'
@@ -45,7 +46,7 @@ const StyledInputDescription = styled.div`
   margin: 10px;
 `
 
-function newProduct() {
+function NewProduct() {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
   const {
@@ -53,9 +54,28 @@ function newProduct() {
     handleSubmit,
     formState: { errors, isValid }
   } = useForm({
-    resolver: joiResolver(),
+    resolver: joiResolver(newProductSchema),
     mode: 'all'
   })
+
+  const handleForm = async (data) => {
+    try {
+      setLoading(true)
+      const { status } = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/products/indexProducts`,
+        data
+      )
+      if (status === 201) {
+        router.push('/')
+      }
+    } catch (err) {
+      console.error(err)
+      throw err
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <Body>
       <Navbar />
@@ -63,10 +83,11 @@ function newProduct() {
       <ContainerPage>
         <StyledText>Cadastre seu novo produto</StyledText>
         <FormContainer>
-          <Form>
+          <Form onSubmit={handleSubmit(handleForm)}>
             <Input label="Código" placeholder="Insira o código" name="Code" control={control} />
             <Input
               label="Título"
+              type="text"
               placeholder="Título para o produto"
               name="Title"
               control={control}
@@ -82,6 +103,8 @@ function newProduct() {
             <StyledInputDescription>
               <Input
                 label="Descrição"
+                type="text"
+                rows="4"
                 placeholder="Insira uma descrição"
                 name="Description"
                 padding="70"
@@ -89,7 +112,13 @@ function newProduct() {
               />
             </StyledInputDescription>
             <ContainerButtonSave>
-              <GeneralButton>SALVAR</GeneralButton>
+              <GeneralButton
+                type="submit"
+                loading={loading}
+                disabled={Object.keys(errors).length > 0 || !isValid}
+              >
+                SALVAR
+              </GeneralButton>
             </ContainerButtonSave>
           </Form>
         </FormContainer>
@@ -98,4 +127,4 @@ function newProduct() {
   )
 }
 
-export default newProduct
+export default NewProduct
