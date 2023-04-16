@@ -12,7 +12,7 @@ const StyledButton = styled.button`
   transition: 0.3s;
   position: relative;
   text-align: center;
-  box-shadow: 0px 10px 20px #04445F;
+  box-shadow: 0px 10px 20px #04445f;
 
   :after {
     content: '';

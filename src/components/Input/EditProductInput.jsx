@@ -11,7 +11,7 @@ const StyledInput = styled.input`
   width: 100%;
   border: 2px solid rgba(239, 239, 239, 0.6);
   border-radius: 50px;
-  background-color: ${(props) => props.theme.WhiteBackground};
+  background-color: ${(props) => props.theme.buttonColor};
   color: ${(props) => props.theme.background};
   padding: ${(props) => props.padding}px 20px;
   box-sizing: border-box;

@@ -1,19 +1,30 @@
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { joiResolver } from '@hookform/resolvers/joi'
 
 import axios from 'axios'
+import styled from 'styled-components'
 
 import { editProductSchema } from '../../../modules/products/products.schema'
 
 import EditProductInput from '../Input/EditProductInput'
 import ButtonAdd from '../button/ButtonAdd'
+import ControlledTextarea from '../Input/ControlledTextarea'
+
+const StyledInputDescription = styled.div`
+  margin: 10px;
+`
+const TextContainer = styled.div`
+  margin: 20px 0;
+  width: 100%;
+`
 
 export default function ProductCardsEdit({ code, title, price, date, description, onSave, id }) {
+  const [loading, setLoading] = useState(false)
   const {
     control,
     handleSubmit,
-    // eslint-disable-next-line no-unused-vars
-    formState: { isValid }
+    formState: { errors, isValid }
   } = useForm({
     resolver: joiResolver(editProductSchema),
     mode: 'all'
@@ -21,6 +32,7 @@ export default function ProductCardsEdit({ code, title, price, date, description
 
   const handleForm = async ({ Code, Title, Price, Date, Description }) => {
     try {
+      setLoading(true)
       const { status } = await axios.patch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/products/indexProducts`,
         {
@@ -75,14 +87,25 @@ export default function ProductCardsEdit({ code, title, price, date, description
         control={control}
         defaultValue={date}
       />
-      <EditProductInput
-        label="Descrição"
-        placeholder="Insira uma descrição"
-        name="Description"
-        control={control}
-        defaultValue={description}
-      />
-      <ButtonAdd type="submit">SALVAR</ButtonAdd>
+      <StyledInputDescription>
+        <TextContainer>
+          <ControlledTextarea
+            placeholder="Insira uma descrição"
+            rows="4"
+            name="Description"
+            maxlength="110"
+            control={control}
+            defaultValue={description}
+          />
+        </TextContainer>
+      </StyledInputDescription>
+      <ButtonAdd
+        type="submit"
+        loading={loading}
+        disabled={Object.keys(errors).length > 0 || !isValid}
+      >
+        SALVAR
+      </ButtonAdd>
     </form>
   )
 }

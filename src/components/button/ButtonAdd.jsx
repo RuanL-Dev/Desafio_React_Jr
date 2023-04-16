@@ -59,9 +59,9 @@ const StyledButtonAdd = styled.button`
   }
 `
 
-const ButtonAdd = ({ children, loading, ...props }) => {
+const ButtonAdd = ({ children, loading, disabled, ...props }) => {
   return (
-    <StyledButtonAdd disabled={loading} {...props}>
+    <StyledButtonAdd disabled={disabled || loading} {...props}>
       {loading && <IconImages imageName="loading" type="svg" size="25px" />}
       {!loading && children}
     </StyledButtonAdd>
