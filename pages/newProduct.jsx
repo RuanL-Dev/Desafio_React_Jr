@@ -13,6 +13,7 @@ import Body from '../src/components/layout/Body'
 import UseContainer from '../src/components/layout/UserContainer'
 import Input from '../src/components/Input/Input'
 import GeneralButton from '../src/components/button/GeneralButton'
+import ControlledTextarea from '../src/components/Input/ControlledTextarea'
 
 const StyledText = styled.h1`
   font-family: 'Inter';
@@ -44,6 +45,10 @@ const Form = styled.form`
 
 const StyledInputDescription = styled.div`
   margin: 10px;
+`
+const TextContainer = styled.div`
+  margin: 20px 0;
+  width: 100%;
 `
 
 function NewProduct() {
@@ -96,20 +101,22 @@ function NewProduct() {
             <Input
               label="Data do cadastro"
               type="date"
+              min="2023-01-01"
+              max="2023-12-30"
               placeholder="(DD/MM/YYYY)"
               name="Date"
               control={control}
             />
             <StyledInputDescription>
-              <Input
-                label="Descrição"
-                type="text"
-                rows="4"
-                placeholder="Insira uma descrição"
-                name="Description"
-                padding="70"
-                control={control}
-              />
+              <TextContainer>
+                <ControlledTextarea
+                  placeholder="Insira uma descrição"
+                  rows="4"
+                  name="Description"
+                  maxlength="110"
+                  control={control}
+                />
+              </TextContainer>
             </StyledInputDescription>
             <ContainerButtonSave>
               <GeneralButton

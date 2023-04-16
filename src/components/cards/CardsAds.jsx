@@ -10,8 +10,8 @@ import { BsBookmarkHeart } from 'react-icons/bs'
 const CardContainer = styled.div`
   background-color: ${(props) => props.theme.WhiteBackground};
   width: 800px;
-  height: 210px;
-  padding: 10px 10px;
+  height: 260px;
+  padding: 10px 30px;
   border-radius: 20px;
   margin: 10px 0;
   text-align: center;
@@ -20,7 +20,7 @@ const CardContainer = styled.div`
   transition: 0.4s;
 `
 const StyledCardText = styled.p`
-  font-size: 20px;
+  font-size: 18px;
   line-height: 33px;
   color: ${(props) => props.theme.background};
   text-align: center;
@@ -28,7 +28,7 @@ const StyledCardText = styled.p`
 `
 const ContainerCardIcon = styled.div`
   display: flex;
-  margin-left: 690px;
+  margin-left: 670px;
   gap: 10px;
 `
 const StyledCardIcons = styled.div`
