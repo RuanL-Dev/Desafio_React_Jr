@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useSWRConfig } from 'swr'
 import axios from 'axios'
 
 import styled from 'styled-components'
 import ProductCardsEdit from './ProductCardsEdit'
+import GeneralButton from '../button/GeneralButton'
 
 import { GoTrashcan } from 'react-icons/go'
 import { FaRegEdit } from 'react-icons/fa'
@@ -11,11 +12,11 @@ import { BsBookmarkHeart } from 'react-icons/bs'
 
 const CardContainer = styled.div`
   background-color: ${(props) => props.theme.WhiteBackground};
-  width: 800px;
-  height: 260px;
-  padding: 10px 30px;
+  width: auto;
+  height: auto;
+  padding: 10px 20px;
   border-radius: 20px;
-  margin: 10px 0;
+  margin: 10px 20px;
   text-align: center;
   box-shadow: ${(props) => props.liked};
   color: white;
@@ -30,7 +31,7 @@ const StyledCardText = styled.p`
 `
 const ContainerCardIcon = styled.div`
   display: flex;
-  margin-left: 670px;
+  margin-left: 750px;
   gap: 10px;
 `
 const StyledCardIcons = styled.div`
@@ -42,9 +43,11 @@ const StyledCardIcons = styled.div`
 
 export default function CardsAds({ code, title, price, date, description, id, isLiked, liked }) {
   const [editCard, setEditCard] = useState(false)
+  const [showDetails, setshowDetails] = useState(false)
   const { mutate } = useSWRConfig()
 
   const handleEdit = async () => {
+    setshowDetails(false)
     setEditCard(!editCard)
     mutate(`${process.env.NEXT_PUBLIC_API_URL}/api/products/indexProducts`)
   }
@@ -89,6 +92,10 @@ export default function CardsAds({ code, title, price, date, description, id, is
     }
   }
 
+  const handleClickButton = () => {
+    setshowDetails(!showDetails)
+  }
+
   return (
     <>
       <CardContainer liked={liked}>
@@ -103,13 +110,25 @@ export default function CardsAds({ code, title, price, date, description, id, is
             <BsBookmarkHeart onClick={handleLike} />
           </StyledCardIcons>
         </ContainerCardIcon>
-        {!editCard && (
+        {!editCard && !showDetails && (
+          <>
+            <StyledCardText>{code}</StyledCardText>
+            <StyledCardText>{title}</StyledCardText>
+            <GeneralButton type="submit" onClick={handleClickButton}>
+              Detalhes
+            </GeneralButton>
+          </>
+        )}
+        {showDetails && (
           <>
             <StyledCardText>{code}</StyledCardText>
             <StyledCardText>{title}</StyledCardText>
             <StyledCardText>{price}</StyledCardText>
             <StyledCardText>{date}</StyledCardText>
             <StyledCardText>{description}</StyledCardText>
+            <GeneralButton type="submit" onClick={handleClickButton}>
+              Detalhes
+            </GeneralButton>
           </>
         )}
         {editCard && (
