@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { useSWRConfig } from 'swr'
 import axios from 'axios'
+
 import styled from 'styled-components'
+import ProductCardsEdit from './ProductCardsEdit'
 
 import { GoTrashcan } from 'react-icons/go'
 import { FaRegEdit } from 'react-icons/fa'
@@ -101,7 +103,7 @@ export default function CardsAds({ code, title, price, date, description, id, is
             <BsBookmarkHeart onClick={handleLike} />
           </StyledCardIcons>
         </ContainerCardIcon>
-        {
+        {!editCard && (
           <>
             <StyledCardText>{code}</StyledCardText>
             <StyledCardText>{title}</StyledCardText>
@@ -109,7 +111,18 @@ export default function CardsAds({ code, title, price, date, description, id, is
             <StyledCardText>{date}</StyledCardText>
             <StyledCardText>{description}</StyledCardText>
           </>
-        }
+        )}
+        {editCard && (
+          <ProductCardsEdit
+            id={id}
+            code={code}
+            title={title}
+            price={price}
+            date={date}
+            description={description}
+            onSave={handleEdit}
+          />
+        )}
       </CardContainer>
     </>
   )
