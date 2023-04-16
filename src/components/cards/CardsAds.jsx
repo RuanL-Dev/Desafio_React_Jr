@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useSWRConfig } from 'swr'
 import axios from 'axios'
 

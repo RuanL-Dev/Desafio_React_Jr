@@ -37,23 +37,45 @@ const ErrorLabel = styled.span`
 `
 
 const errorMessage = {
-  'string.empty': 'Obrigatório o preenchimento desse campo',
-  'string.max': 'Este campo só permite o formato YYYY',
-  'string.min': 'Este campo só permite o formato YYYY'
+  'string.empty': 'Obrigatório o preenchimento desse campo'
 }
 
 // eslint-disable-next-line react/display-name
-const EditProductInput = ({ name, control, defaultValue = '', ...props }) => {
+const EditProductInput = ({
+  name,
+  control,
+  defaultValue = '',
+  padding,
+  type,
+  step,
+  min,
+  max,
+  ...props
+}) => {
   const {
     field: { value, onChange },
     fieldState: { error }
   } = useController({ name, control, defaultValue })
   return (
     <InputContainer>
-      <StyledInput {...props} error={error} value={value} onChange={onChange} />
+      <StyledInput
+        {...props}
+        error={error}
+        value={value}
+        onChange={onChange}
+        padding={padding}
+        type={type}
+        step={step}
+        min={min}
+        max={max}
+      />
       {error && <ErrorLabel>{errorMessage[error.type] || error.message}</ErrorLabel>}
     </InputContainer>
   )
+}
+
+EditProductInput.defaultProps = {
+  padding: '30'
 }
 
 export default EditProductInput
