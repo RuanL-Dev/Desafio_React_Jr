@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 import Burguer from './Burguer'
+import IconImage from '../iconImage/IconImage'
 
 const Container = styled.div`
   display: flex;

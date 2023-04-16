@@ -2,6 +2,14 @@ import { useRouter } from 'next/router'
 
 import styled from 'styled-components'
 
+import IconImage from '../iconImage/IconImage'
+
+const StyledLogo = styled.div`
+  width: 14vh;
+  position: absolute;
+  left: 25px;
+`
+
 const StyledUl = styled.ul`
   list-style: none;
   display: flex;
@@ -67,12 +75,17 @@ const RightNavBar = ({ open }) => {
   }
 
   return (
-    <StyledUl open={open}>
-      <li onClick={handleClicktoMyAdds}>Home</li>
-      <li onClick={handleClickToNewProduct}>Cadastros</li>
-      <li onClick={handleClicktoMyAdds}>Meus Anúncios</li>
-      <li onClick={handleClick}>Relatórios</li>
-    </StyledUl>
+    <>
+      <StyledLogo>
+        <IconImage imageName="VendiTudo" type="svg" size="170px" />
+      </StyledLogo>
+      <StyledUl open={open}>
+        <li onClick={handleClicktoMyAdds}>Home</li>
+        <li onClick={handleClickToNewProduct}>Cadastros</li>
+        <li onClick={handleClicktoMyAdds}>Meus Anúncios</li>
+        <li onClick={handleClick}>Relatórios</li>
+      </StyledUl>
+    </>
   )
 }
 
