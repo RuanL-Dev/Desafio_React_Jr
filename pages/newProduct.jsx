@@ -97,7 +97,15 @@ function NewProduct() {
               name="Title"
               control={control}
             />
-            <Input label="Preço" placeholder="(R$)" name="Price" control={control} />
+            <Input
+              label="Preço"
+              placeholder="(R$)"
+              name="Price"
+              type="number"
+              step="1"
+              min="0,01"
+              control={control}
+            />
             <Input
               label="Data do cadastro"
               type="date"

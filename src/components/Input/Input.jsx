@@ -43,13 +43,22 @@ const ErrorLabel = styled.span`
 `
 
 const errorMessage = {
-  'string.empty': 'Obrigatório o preenchimento desse campo',
-  'string.max': 'Este campo só permite o formato YYYY',
-  'string.min': 'Este campo só permite o formato YYYY'
+  'string.empty': 'Obrigatório o preenchimento desse campo'
 }
 
 // eslint-disable-next-line react/display-name
-function Input({ label, name, control, defaultValue = '', padding, ...props }) {
+function Input({
+  label,
+  name,
+  control,
+  defaultValue = '',
+  padding,
+  type,
+  step,
+  min,
+  max,
+  ...props
+}) {
   const {
     field: { value, onChange },
     fieldState: { error }
@@ -57,7 +66,17 @@ function Input({ label, name, control, defaultValue = '', padding, ...props }) {
   return (
     <InputContainer>
       <StyledLabel>{label}</StyledLabel>
-      <StyledInput {...props} error={error} value={value} onChange={onChange} padding={padding} />
+      <StyledInput
+        {...props}
+        error={error}
+        value={value}
+        onChange={onChange}
+        padding={padding}
+        type={type}
+        step={step}
+        min={min}
+        max={max}
+      />
       {error && <ErrorLabel>{errorMessage[error.type] || error.message}</ErrorLabel>}
     </InputContainer>
   )
