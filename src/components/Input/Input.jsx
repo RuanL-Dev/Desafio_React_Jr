@@ -53,6 +53,7 @@ function Input({
   control,
   defaultValue = '',
   padding,
+  pattern,
   type,
   step,
   min,

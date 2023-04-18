@@ -48,7 +48,7 @@ function HomePage() {
         <SearchInput
           type="text"
           name="search"
-          placeholder="buscar"
+          placeholder="Buscar"
           onChange={(event) => setproducts(event.target.value.toUpperCase())}
         />
         <StyledText>Favoritos</StyledText>
