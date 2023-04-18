@@ -37,6 +37,11 @@ const StyledCardText = styled.p`
   color: ${(props) => props.theme.background};
   text-align: center;
   overflow: hidden;
+
+  @media (max-width: 520px) {
+    font-size: 25px;
+    padding: 0 10px;
+  }
 `
 const ContainerCardIcon = styled.div`
   display: flex;
