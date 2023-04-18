@@ -29,6 +29,7 @@ const CardContainer = styled.div`
   @media (min-width: 950px) {
     width: 95%;
     position: relative;
+    padding: 30px 20px;
   }
 `
 const StyledCardText = styled.p`
@@ -51,6 +52,7 @@ const ContainerCardIcon = styled.div`
   @media (min-width: 950px) {
     position: absolute;
     right: 10px;
+    top: 7px;
   }
 `
 const StyledCardIcons = styled.div`
