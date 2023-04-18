@@ -5,9 +5,10 @@ import styled from 'styled-components'
 import IconImage from '../iconImage/IconImage'
 
 const StyledLogo = styled.div`
-  width: 14vh;
+  width: 11vh;
   position: absolute;
   left: 25px;
+  cursor: pointer;
 `
 
 const StyledUl = styled.ul`
@@ -52,10 +53,10 @@ const StyledUl = styled.ul`
     transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(100%)')};
     top: 0;
     right: 0;
-    height: 50vh;
-    width: 300px;
-    gap: 30px;
-    font-size: 35px;
+    height: 45vh;
+    width: 350px;
+    gap: 40px;
+    font-size: 45px;
     transition: transform 0.3s ease-in-out;
   }
 `
@@ -76,12 +77,12 @@ const RightNavBar = ({ open }) => {
 
   return (
     <>
-      <StyledLogo>
+      <StyledLogo onClick={handleClicktoMyAdds}>
         <IconImage imageName="VendiTudo" type="svg" size="170px" />
       </StyledLogo>
       <StyledUl open={open}>
         <li onClick={handleClicktoMyAdds}>Home</li>
-        <li onClick={handleClickToNewProduct}>Cadastros</li>
+        <li onClick={handleClickToNewProduct}>Cadastrar</li>
         <li onClick={handleClicktoMyAdds}>Meus Anúncios</li>
         <li onClick={handleClick}>Relatórios</li>
       </StyledUl>

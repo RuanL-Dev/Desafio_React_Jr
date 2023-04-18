@@ -6,6 +6,10 @@ const StyledBody = styled.div`
   align-items: center;
   justify-content: center;
   gap: 15px;
+
+  @media (max-width: 800px) {
+    width: 900px;
+  }
 `
 
 export default function Body({ children }) {

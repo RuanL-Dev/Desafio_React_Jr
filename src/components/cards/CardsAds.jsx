@@ -21,6 +21,15 @@ const CardContainer = styled.div`
   box-shadow: ${(props) => props.liked};
   color: white;
   transition: 0.4s;
+
+  @media (max-width: 940px) {
+    padding: 15px 5px;
+  }
+
+  @media (min-width: 950px) {
+    width: 95%;
+    position: relative;
+  }
 `
 const StyledCardText = styled.p`
   font-size: 18px;
@@ -33,6 +42,11 @@ const ContainerCardIcon = styled.div`
   display: flex;
   margin-left: 750px;
   gap: 10px;
+
+  @media (min-width: 950px) {
+    position: absolute;
+    right: 10px;
+  }
 `
 const StyledCardIcons = styled.div`
   cursor: pointer;

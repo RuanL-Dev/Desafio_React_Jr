@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const StyledMainContainer = styled.div`
   background-color: ${(props) => props.theme.secondBackgroundColor};
-  width: 900px;
+  width: 95%;
   min-height: 100vh;
   display: flex;
   align-items: center;

@@ -8,7 +8,7 @@ import IconImage from '../iconImage/IconImage'
 const StyledMainContainer = styled.div`
   background-color: ${(props) => props.theme.secondBackgroundColor};
   margin-top: 1vh;
-  width: 900px;
+  width: 95%;
   min-height: 15vh;
   display: flex;
   align-items: center;

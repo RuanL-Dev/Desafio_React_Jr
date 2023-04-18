@@ -31,17 +31,8 @@ const StyledInput = styled.input`
     color: ${(props) => props.theme.WhiteBackground};
   }
 
-  @media (max-width: 850px) {
-    width: auto;
-  }
-  @media (max-width: 630px) {
-    width: 400px;
-  }
-  @media (max-width: 510px) {
-    width: 300px;
-  }
-  @media (max-width: 400px) {
-    width: 250px;
+  @media (min-width: 950px) {
+    width: 850px;
   }
 `
 
