@@ -2,7 +2,7 @@ import { useController } from 'react-hook-form'
 
 import styled from 'styled-components'
 
-import Textarea from './TextArea'
+import Textarea from './Textarea'
 
 const ErrorLabel = styled.span`
   color: ${(props) => props.theme.error};
