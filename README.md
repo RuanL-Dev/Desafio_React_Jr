@@ -4,7 +4,7 @@ Link to the project - https://desafio-react-jr-ruangomes.vercel.app
 
 
 ## ServerSoftwares trial - Ruan Lopes Gomes
-This is my website created to meet ServerSoftwares requirements for the test to be a React_Jr.
+This is my website created to meet ServerSoftwares requirements for Backend and Frontend in the test to be a React_Jr.
 Enjoy It and I hope you the best!
 
 
