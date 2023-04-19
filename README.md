@@ -8,7 +8,7 @@ This is my website created to meet ServerSoftwares requirements for the test to 
 Enjoy It and I hope you the best!
 
 
-# Índice 
+# Index 
 
 - [Technology](#Technology)
 - [Services Used](#Services-Used)
