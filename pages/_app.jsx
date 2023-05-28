@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'Inter', sans-serif;
-    background-color: ${(props) => props.theme.background};
+    background-color: ${(props) => props.theme.backgroundForReport};
   }
 `
 

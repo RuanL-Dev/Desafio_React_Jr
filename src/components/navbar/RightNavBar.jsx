@@ -71,8 +71,9 @@ const RightNavBar = ({ open }) => {
     !open
     router.push('/')
   }
-  const handleClick = () => {
+  const handleClickToReports = () => {
     !open
+    router.push('/reports')
   }
 
   return (
@@ -84,7 +85,7 @@ const RightNavBar = ({ open }) => {
         <li onClick={handleClicktoMyAdds}>Home</li>
         <li onClick={handleClickToNewProduct}>Cadastrar</li>
         <li onClick={handleClicktoMyAdds}>Meus Anúncios</li>
-        <li onClick={handleClick}>Relatórios</li>
+        <li onClick={handleClickToReports}>Relatórios</li>
       </StyledUl>
     </>
   )
