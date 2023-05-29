@@ -1,13 +1,14 @@
 import styled from 'styled-components'
 
-import IconImage from '../src/components/iconImage/IconImage'
-import { MdAddBox } from "react-icons/md"
+import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js'
+import { Bar } from 'react-chartjs-2'
+import { Doughnut } from 'react-chartjs-2'
 
-const MainContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  background-color: #ffffff;
-`
+import IconImage from '../src/components/iconImage/IconImage'
+import { MdAddBox } from 'react-icons/md'
+
+ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend)
+
 const Container = styled.div`
   display: flex;
   position: relative;
@@ -23,7 +24,7 @@ const StyledContainerNavbar = styled.div`
   display: flex;
   left: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 100;
 `
 const StyledNavbarImages = styled.div`
   position: absolute;
@@ -43,12 +44,10 @@ const StyledTitle = styled.h1`
   cursor: pointer;
 `
 const VerticalToolBar = styled.div`
-  position: fixed;
+  position: absolute;
   width: 52px;
   height: 100vh;
-  padding: 60px 7px;
   border-right: 1px solid #dddddd;
-  background-color: #ffffff;
   z-index: -1;
 `
 const StyledCardIcons = styled.div`
@@ -56,11 +55,31 @@ const StyledCardIcons = styled.div`
   color: #078aa3;
   font-size: 38px;
   border: none;
+  padding: 60px 7px;
+`
+const GraphicContainer = styled.div`
+  padding: 20px;
+  margin-left: 100px;
+  width: 80%;
 `
 
 function Reports() {
+  const data = {
+    labels: ['Mon', 'Tue', 'Wed'],
+    datasets: [
+      {
+        label: '369',
+        data: [3, 6, 9],
+        backgroundColor: 'aqua',
+        borderColor: 'black',
+        borderWidth: 1
+      }
+    ]
+  }
+
+  const options = {}
   return (
-    <MainContainer>
+    <>
       <Container>
         <StyledContainerNavbar>
           <StyledTitle>MapStore Dashboard Editor</StyledTitle>
@@ -77,7 +96,10 @@ function Reports() {
           </StyledCardIcons>
         </VerticalToolBar>
       </Container>
-    </MainContainer>
+      <GraphicContainer>
+        <Bar data={data} options={options}></Bar>
+      </GraphicContainer>
+    </>
   )
 }
 
