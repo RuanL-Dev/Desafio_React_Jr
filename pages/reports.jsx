@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
-import { Doughnut } from 'react-chartjs-2'
+//import { Doughnut } from 'react-chartjs-2'
 
 import IconImage from '../src/components/iconImage/IconImage'
 import { MdAddBox } from 'react-icons/md'
@@ -57,27 +57,139 @@ const StyledCardIcons = styled.div`
   border: none;
   padding: 60px 7px;
 `
-const GraphicContainer = styled.div`
-  padding: 20px;
-  margin-left: 100px;
-  width: 80%;
+const LayoutGridContainer = styled.div`
+  height: 352px;
+  position: relative;
+  transition: height 200ms ease;
+`
+
+const MainContainerGraphic = styled.div`
+  width: 412px;
+  height: 332px;
+  position: absolute;
+  touch-action: none;
+  transform: translate(10px, 10px);
+  transition-property: transform;
+  transition: all 200ms ease;
+`
+const ContainerCard = styled.div`
+  background: #fff;
+  overflow: visible;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  margin: 0 60px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+`
+const StyledCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+`
+const GraphicContainer = styled.div``
+
+const GraphicTitleContainer = styled.div`
+  display: flex;
+  width: calc(100% - 40px);
+  height: 52px;
+  margin: 0 20px;
+  margin-bottom: 10px;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+`
+const GraphicTitleText = styled.h2`
+  font-family: 'Open Sans', sans-serif;
+  -webkit-text-size-adjust: 100%;
+  font-size: 15px;
+  color: #333333;
+`
+const GraphicBorderLayout = styled.div`
+  display: flex;
+  flex: 1 1 0%;
+  overflow-y: auto;
+`
+const GraphicBorderLayoutContent = styled.div`
+  flex: 1 1 0%;
+  border: none;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+`
+const GraphicWidgetBody = styled.div`
+  height: 100%;
+  position: relative;
+`
+const GraphicWrapperChart = styled.div`
+  position: relative;
+  cursor: default;
+  width: 372px;
+  height: 260px;
+  margin-left: 10px;
 `
 
 function Reports() {
   const data = {
-    labels: ['Mon', 'Tue', 'Wed'],
+    labels: [
+      'piemonte',
+      'valle daosta',
+      'lombardia',
+      'trentino-alto',
+      'veneto',
+      'friuli venezia',
+      'liguria',
+      'emilia-romagna',
+      'toscana',
+      'umbria',
+      'marche',
+      'lazio',
+      'abruzzo',
+      'molise',
+      'campania',
+      'puglia',
+      'basilicata',
+      'calabria',
+      'sicilia',
+      'sardegna'
+    ],
     datasets: [
       {
-        label: '369',
-        data: [3, 6, 9],
-        backgroundColor: 'aqua',
+        label: 'Regions of Italy',
+        data: [
+          25394103941, 3259040961, 23862698613, 13608018378, 18405499479, 7864293935, 5415464956,
+          22451465521, 22984426772, 8464007915, 9401177971, 17227617801, 10829102919, 4461149496,
+          13663989800, 19537077223, 10073260222, 15216683867, 25824775591, 24094165311
+        ],
+        backgroundColor: 'rgb(8, 136, 161)',
         borderColor: 'black',
         borderWidth: 1
       }
     ]
   }
 
-  const options = {}
+  const options = {
+    responsive: true,
+    scales: {
+      y: {
+        ticks: {
+          display: false
+        }
+      }
+    },
+    plugins: {
+      legend: {
+        display: false
+      }
+    },
+    elements: {
+      rectangle: {
+        borderWidth: 5,
+        borderColor: 'black'
+      }
+    }
+  }
   return (
     <>
       <Container>
@@ -96,9 +208,28 @@ function Reports() {
           </StyledCardIcons>
         </VerticalToolBar>
       </Container>
-      <GraphicContainer>
-        <Bar data={data} options={options}></Bar>
-      </GraphicContainer>
+      <LayoutGridContainer>
+        <MainContainerGraphic>
+          <ContainerCard>
+            <StyledCard>
+              <GraphicContainer>
+                <GraphicTitleContainer>
+                  <GraphicTitleText>Regions of Italy</GraphicTitleText>
+                </GraphicTitleContainer>
+                <GraphicBorderLayout>
+                  <GraphicBorderLayoutContent>
+                    <GraphicWidgetBody>
+                      <GraphicWrapperChart>
+                        <Bar data={data} options={options}></Bar>
+                      </GraphicWrapperChart>
+                    </GraphicWidgetBody>
+                  </GraphicBorderLayoutContent>
+                </GraphicBorderLayout>
+              </GraphicContainer>
+            </StyledCard>
+          </ContainerCard>
+        </MainContainerGraphic>
+      </LayoutGridContainer>
     </>
   )
 }
