@@ -43,24 +43,56 @@ const StyledTitle = styled.h1`
   margin-left: 15px;
   cursor: pointer;
 `
+const MapStoreBody = styled.div`
+  position: fixed;
+  width: 100%;
+  height: 100%;
+`
+const MapBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+`
+const MapBorderLayout = styled.div`
+  display: flex;
+  flex: 1 1 0%;
+  overflow-y: auto;
+`
+const MapBorderLayoutContent = styled.div`
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #dddddd;
+`
+const DashboardBodyContainer = styled.div`
+  overflow-y: auto;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+`
 const VerticalToolBar = styled.div`
   position: absolute;
   width: 52px;
   height: 100vh;
   border-right: 1px solid #dddddd;
   z-index: -1;
+  order: -1;
 `
 const StyledCardIcons = styled.div`
   cursor: pointer;
   color: #078aa3;
   font-size: 38px;
   border: none;
-  padding: 60px 7px;
+  padding: 10px 7px;
 `
 const LayoutGridContainer = styled.div`
   height: 352px;
   position: relative;
   transition: height 200ms ease;
+  padding-left: 53px;
 `
 
 const MainContainerGraphic = styled.div`
@@ -68,7 +100,7 @@ const MainContainerGraphic = styled.div`
   height: 332px;
   position: absolute;
   touch-action: none;
-  transform: translate(10px, 10px);
+  transform: translate(-50px, 10px);
   transition-property: transform;
   transition: all 200ms ease;
 `
@@ -202,34 +234,44 @@ function Reports() {
             </StyledImages>
           </StyledNavbarImages>
         </StyledContainerNavbar>
-        <VerticalToolBar>
-          <StyledCardIcons>
-            <MdAddBox />
-          </StyledCardIcons>
-        </VerticalToolBar>
       </Container>
-      <LayoutGridContainer>
-        <MainContainerGraphic>
-          <ContainerCard>
-            <StyledCard>
-              <GraphicContainer>
-                <GraphicTitleContainer>
-                  <GraphicTitleText>Regions of Italy</GraphicTitleText>
-                </GraphicTitleContainer>
-                <GraphicBorderLayout>
-                  <GraphicBorderLayoutContent>
-                    <GraphicWidgetBody>
-                      <GraphicWrapperChart>
-                        <Bar data={data} options={options}></Bar>
-                      </GraphicWrapperChart>
-                    </GraphicWidgetBody>
-                  </GraphicBorderLayoutContent>
-                </GraphicBorderLayout>
-              </GraphicContainer>
-            </StyledCard>
-          </ContainerCard>
-        </MainContainerGraphic>
-      </LayoutGridContainer>
+      <MapStoreBody>
+        <MapBody>
+          <MapBorderLayout>
+            <MapBorderLayoutContent>
+              <DashboardBodyContainer>
+                <VerticalToolBar>
+                  <StyledCardIcons>
+                    <MdAddBox />
+                  </StyledCardIcons>
+                </VerticalToolBar>
+                <LayoutGridContainer>
+                  <MainContainerGraphic>
+                    <ContainerCard>
+                      <StyledCard>
+                        <GraphicContainer>
+                          <GraphicTitleContainer>
+                            <GraphicTitleText>Regions of Italy</GraphicTitleText>
+                          </GraphicTitleContainer>
+                          <GraphicBorderLayout>
+                            <GraphicBorderLayoutContent>
+                              <GraphicWidgetBody>
+                                <GraphicWrapperChart>
+                                  <Bar data={data} options={options}></Bar>
+                                </GraphicWrapperChart>
+                              </GraphicWidgetBody>
+                            </GraphicBorderLayoutContent>
+                          </GraphicBorderLayout>
+                        </GraphicContainer>
+                      </StyledCard>
+                    </ContainerCard>
+                  </MainContainerGraphic>
+                </LayoutGridContainer>
+              </DashboardBodyContainer>
+            </MapBorderLayoutContent>
+          </MapBorderLayout>
+        </MapBody>
+      </MapStoreBody>
     </>
   )
 }
