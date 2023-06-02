@@ -16,7 +16,7 @@ const Container = styled.div`
   -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06), 0 4px 8px rgba(0, 0, 0, 0.12);
   -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06), 0 4px 8px rgba(0, 0, 0, 0.12);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06), 0 4px 8px rgba(0, 0, 0, 0.12);
-  background-color: #ffffff;
+  background-color: ${(props) => props.theme.backgroundForReport};
 `
 const StyledContainerNavbar = styled.div`
   position: absolute;
