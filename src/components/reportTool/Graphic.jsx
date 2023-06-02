@@ -115,7 +115,6 @@ const options = {
 }
 
 function Graphic({ id }) {
-  console.log(id)
   // eslint-disable-next-line no-unused-vars
   const [{ isDragging }, drag] = useDrag(() => ({
     type: 'graphic',

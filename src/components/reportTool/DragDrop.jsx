@@ -32,9 +32,7 @@ const ContainerCard = styled.div`
 `
 
 function DragDrop({ newGraphic }) {
-  console.log(newGraphic)
   const [board, setBoard] = useState([{ id: newGraphic }])
-  console.log(board)
   useEffect(() => {
     if (newGraphic !== '') {
       if (!board.some((chart) => chart.id === newGraphic)) {
