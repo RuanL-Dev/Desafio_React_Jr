@@ -28,14 +28,12 @@ const draggingCard = (isDragging, draggableStyle) => ({
 })
 
 function DragDrop({ newGraphic }) {
-  console.log(newGraphic)
   const [board, setBoard] = useState([
     {
       id: uuidv4(),
       name: newGraphic
     }
   ])
-  console.log(board)
   useEffect(() => {
     if (!board.some((chart) => chart.name === newGraphic)) {
       setBoard((prevBoard) => [...prevBoard, { id: uuidv4(), name: newGraphic }])
