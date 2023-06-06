@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import { DndProvider } from 'react-dnd'
-import { HTML5Backend } from 'react-dnd-html5-backend'
 
 import styled from 'styled-components'
 
@@ -96,7 +94,6 @@ function Reports() {
   const handleClick = () => {
     const newCounter = counter + 1
     const newGraphicName = `chart${newCounter}`
-
     setCounter(newCounter)
     setNewGraphic(newGraphicName)
   }
@@ -124,9 +121,7 @@ function Reports() {
                     <MdAddBox />
                   </StyledCardIcons>
                 </VerticalToolBar>
-                <DndProvider backend={HTML5Backend}>
-                  <DragDrop newGraphic={newGraphic} />
-                </DndProvider>
+                {newGraphic !== '' && <DragDrop newGraphic={newGraphic} />}
               </DashboardBodyContainer>
             </MapBorderLayoutContent>
           </MapBorderLayout>
