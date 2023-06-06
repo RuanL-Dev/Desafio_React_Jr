@@ -1,18 +1,30 @@
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
 
-import { useDrag } from 'react-dnd'
-
 import styled from 'styled-components'
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend)
+
+const MainContainerGraphic = styled.div`
+  display: flex;
+  width: 412px;
+  height: 332px;
+  transform: translate(10px, 10px);
+  transition-property: transform;
+  transition: all 200ms ease;
+`
+
+const ContainerCard = styled.div`
+  background: #fff;
+  margin: 0 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+`
 
 const StyledCard = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
-  overflow: hidden;
 `
 
 const GraphicTitleContainer = styled.div`
@@ -114,31 +126,27 @@ const options = {
   }
 }
 
-function Graphic({ id }) {
-  // eslint-disable-next-line no-unused-vars
-  const [{ isDragging }, drag] = useDrag(() => ({
-    type: 'graphic',
-    item: { id: id },
-    collect: (monitor) => ({
-      isDragging: !!monitor.isDragging()
-    })
-  }))
+function Graphic() {
   return (
     <>
-      <StyledCard ref={drag}>
-        <GraphicTitleContainer>
-          <GraphicTitleText>Regions of Italy</GraphicTitleText>
-        </GraphicTitleContainer>
-        <GraphicBorderLayout>
-          <GraphicBorderLayoutContent>
-            <GraphicWidgetBody>
-              <GraphicWrapperChart>
-                <Bar data={data} options={options}></Bar>
-              </GraphicWrapperChart>
-            </GraphicWidgetBody>
-          </GraphicBorderLayoutContent>
-        </GraphicBorderLayout>
-      </StyledCard>
+      <MainContainerGraphic>
+        <ContainerCard>
+          <StyledCard>
+            <GraphicTitleContainer>
+              <GraphicTitleText>Regions of Italy</GraphicTitleText>
+            </GraphicTitleContainer>
+            <GraphicBorderLayout>
+              <GraphicBorderLayoutContent>
+                <GraphicWidgetBody>
+                  <GraphicWrapperChart>
+                    <Bar data={data} options={options}></Bar>
+                  </GraphicWrapperChart>
+                </GraphicWidgetBody>
+              </GraphicBorderLayoutContent>
+            </GraphicBorderLayout>
+          </StyledCard>
+        </ContainerCard>
+      </MainContainerGraphic>
     </>
   )
 }

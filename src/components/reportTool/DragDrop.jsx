@@ -1,88 +1,92 @@
-import { useDrop } from 'react-dnd'
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react'
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+import { v4 as uuidv4 } from 'uuid'
 
 import styled from 'styled-components'
 
 import Graphic from './Graphic'
 
 const LayoutGridContainer = styled.div`
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  transition: height 200ms ease;
-  padding-left: 53px;
-`
-
-const MainContainerGraphic = styled.div`
   display: flex;
-  width: 412px;
-  height: 332px;
-  touch-action: none;
-  transform: translate(0px, 10px);
-  transition-property: transform;
-  transition: all 200ms ease;
+  flex-wrap: wrap;
+  height: 50%;
+  width: 100%;
+  padding-left: 30px;
+
+  > div {
+    padding: 0;
+    margin: 0;
+  }
 `
-const ContainerCard = styled.div`
-  background: #fff;
-  overflow: visible;
-  height: 100%;
-  flex: 1;
-  margin: 0 15px;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-`
+const draggingCard = (isDragging, draggableStyle) => ({
+  userSelect: 'none',
+  padding: 5,
+  margin: '7px',
+  background: isDragging ? 'pink' : '#ffffff',
+  ...draggableStyle
+})
 
 function DragDrop({ newGraphic }) {
-  const [board, setBoard] = useState([{ id: newGraphic }])
+  console.log(newGraphic)
+  const [board, setBoard] = useState([
+    {
+      id: uuidv4(),
+      name: newGraphic
+    }
+  ])
+  console.log(board)
   useEffect(() => {
-    if (newGraphic !== '') {
-      if (!board.some((chart) => chart.id === newGraphic)) {
-        setBoard((prevBoard) => [...prevBoard, { id: newGraphic }])
-      }
+    if (!board.some((chart) => chart.name === newGraphic)) {
+      setBoard((prevBoard) => [...prevBoard, { id: uuidv4(), name: newGraphic }])
     }
-  }, [board, newGraphic])
+  }, [newGraphic])
+  const handleDragDrop = (results) => {
+    const { source, destination, type } = results
 
-  // eslint-disable-next-line no-unused-vars
-  const [{ isOver }, drop] = useDrop(() => ({
-    accept: 'graphic',
-    drop: (item) => addGraphicToBoard(item.id),
-    collect: (monitor) => ({
-      isOver: !!monitor.isOver()
-    })
-  }))
+    if (!destination) return
 
-  const generateUniqueId = () => {
-    const timestamp = new Date().getTime()
-    const random = Math.floor(Math.random() * 10000)
-    return `${timestamp}-${random}`
-  }
+    if (source.droppableId === destination.droppableId && source.index === destination.index) return
 
-  const addGraphicToBoard = (id) => {
-    const chartIds = board.filter((chart) => id === chart.id)
-    if (chartIds.length === 0) {
-      const newChart = { id: generateUniqueId() }
-      setBoard((prevBoard) => [...prevBoard, newChart])
+    if (type === 'group') {
+      const reorderedBoard = [...board]
+      const sourceIndex = source.index
+      const destinationIndex = destination.index
+
+      const [removedGraphic] = reorderedBoard.splice(sourceIndex, 1)
+      reorderedBoard.splice(destinationIndex, 0, removedGraphic)
+
+      return setBoard(reorderedBoard)
     }
-  }
-  if (newGraphic === '') {
-    return null
   }
 
   return (
     <>
-      <LayoutGridContainer ref={drop}>
-        <MainContainerGraphic>
-          {board?.map((chart) => {
-            if (chart.id !== '') {
-              return (
-                <ContainerCard key={chart.id}>
-                  <Graphic id={chart.id} />
-                </ContainerCard>
-              )
-            }
-            return null
-          })}
-        </MainContainerGraphic>
-      </LayoutGridContainer>
+      <DragDropContext onDragEnd={handleDragDrop}>
+        <Droppable droppableId={newGraphic} type="group">
+          {(provided) => (
+            <LayoutGridContainer {...provided.droppableProps} ref={provided.innerRef}>
+              {board?.map((item, index) => {
+                return (
+                  <Draggable draggableId={item.id} key={item.id} index={index}>
+                    {(provided, snapshot) => (
+                      <div
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        ref={provided.innerRef}
+                        style={draggingCard(snapshot.isDragging, provided.draggableProps.style)}
+                      >
+                        <Graphic />
+                      </div>
+                    )}
+                  </Draggable>
+                )
+              })}
+              {provided.placeholder}
+            </LayoutGridContainer>
+          )}
+        </Droppable>
+      </DragDropContext>
     </>
   )
 }
