@@ -12,7 +12,7 @@ const LayoutGridContainer = styled.div`
   flex-wrap: wrap;
   height: 50%;
   width: 100%;
-  padding-left: 30px;
+  padding-left: 40px;
 
   > div {
     padding: 0;
